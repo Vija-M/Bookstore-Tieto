@@ -41,6 +41,4 @@ public class Book {
     @JoinColumn(name = "friend_id")
     private Friend friend;
 
-    //        @ManyToOne
-    //        private Post post;
 }

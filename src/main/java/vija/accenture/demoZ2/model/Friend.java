@@ -26,6 +26,6 @@ public class Friend {
     private int phoneNr;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "friend", cascade = {CascadeType.MERGE})
-    @JoinColumn(name = "book_id")
+   // @JoinColumn(name = "book_id")
     private List<Book> books = new ArrayList<>();
 }

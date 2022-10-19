@@ -1,15 +1,13 @@
 package vija.accenture.demoZ2.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -25,7 +23,12 @@ public class Friend {
     @Column(name = "phoneNr", length = 50, nullable = false, unique = true)
     private int phoneNr;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "friend", cascade = {CascadeType.MERGE})
-   // @JoinColumn(name = "book_id")
-    private List<Book> books = new ArrayList<>();
+    @ManyToMany(mappedBy = "friends", cascade = CascadeType.ALL)
+    // @JoinColumn(name = "book_id")
+    private Set<Book> books = new HashSet<>();
+
+    public Friend(String name, int phoneNr) {
+        this.name = name;
+        this.phoneNr = phoneNr;
+    }
 }

@@ -20,12 +20,12 @@ public class Friend {
     private String name;
 
     @Column(name = "phoneNr", length = 50, nullable = false, unique = true)
-    private int phoneNr;
+    private String phoneNr;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE , CascadeType.REMOVE}, mappedBy = "friends")
     private Set<Book> books = new HashSet<>();
 
-    public Friend(String name, int phoneNr) {
+    public Friend(String name, String phoneNr) {
         this.name = name;
         this.phoneNr = phoneNr;
     }

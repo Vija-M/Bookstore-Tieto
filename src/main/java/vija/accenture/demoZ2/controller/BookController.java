@@ -28,7 +28,6 @@ public class BookController {
     @RequestMapping("/books")
     public String findAllBooks(Model model) {
         final List<Book> books = bookService.findAllBooks();
-
         model.addAttribute("books", books);
         return "list-books";
     }
@@ -36,7 +35,6 @@ public class BookController {
     @RequestMapping("/searchBook")
     public String searchBook(@Param("keyword") String keyword, Model model) {
         final List<Book> books = bookService.searchBooks(keyword);
-
         model.addAttribute("books", books);
         model.addAttribute("keyword", keyword);
         return "list-books";
@@ -45,14 +43,13 @@ public class BookController {
     @RequestMapping("/book/{id}")
     public String findBookById(@PathVariable("id") Long id, Model model) {
         final Book book = bookService.findBookById(id);
-
         model.addAttribute("book", book);
         return "list-book";
     }
 
     @GetMapping("/add")
     public String showCreateForm(Book book, Model model) {
-        model.addAttribute("categories", friendService.findAllFriends());
+        model.addAttribute("friends", friendService.findAllFriends());
         return "add-book";
     }
 
@@ -61,7 +58,6 @@ public class BookController {
         if (result.hasErrors()) {
             return "add-book";
         }
-
         bookService.createBook(book);
         model.addAttribute("book", bookService.findAllBooks());
         return "redirect:/books";
@@ -70,7 +66,6 @@ public class BookController {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         final Book book = bookService.findBookById(id);
-
         model.addAttribute("book", book);
         return "update-book";
     }
@@ -81,7 +76,6 @@ public class BookController {
             book.setId(id);
             return "update-book";
         }
-
         bookService.updateBook(book);
         model.addAttribute("book", bookService.findAllBooks());
         return "redirect:/books";
@@ -90,10 +84,8 @@ public class BookController {
     @RequestMapping("/remove-book/{id}")
     public String deleteBook(@PathVariable("id") Long id, Model model) {
         bookService.deleteBook(id);
-
         model.addAttribute("book", bookService.findAllBooks());
         return "redirect:/books";
     }
-
 }
 

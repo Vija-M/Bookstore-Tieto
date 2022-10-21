@@ -11,23 +11,23 @@ import vija.accenture.demoZ2.model.Friend;
 import vija.accenture.demoZ2.service.FriendService;
 
 import java.util.List;
+
 @Controller
 public class FriendController {
 
     @Autowired
     private final FriendService friendService;
 
-    public FriendController (FriendService friendService){
+    public FriendController(FriendService friendService) {
         this.friendService = friendService;
     }
 
-        @RequestMapping("/friends")
-        public String findAllFriends(Model model) {
-            List<Friend> friends = friendService.findAllFriends();
-            model.addAttribute("friends", friends);
-            return "list-friends";
-        }
-
+    @RequestMapping("/friends")
+    public String findAllFriends(Model model) {
+        List<Friend> friends = friendService.findAllFriends();
+        model.addAttribute("friends", friends);
+        return "list-friends";
+    }
 
     @RequestMapping("/friend/{id}")
     public String findFriendById(@PathVariable("id") Long id, Model model) {

@@ -35,6 +35,15 @@ public class DemoZ2Application {
             book3.addFriends(friend3);
             bookService.createBook(book3);
 
+            Book book4 = new Book("World War 1", "Ann Craft", Genre.HISTORICAL_FICTION, 246, Cover.SOFT_COVER, "1A");
+            Friend friend4 = new Friend("Ieva", 26657689);
+            book4.addFriends(friend4);
+            bookService.createBook(book4);
+
+            Book book5 = new Book("World War 3", "Ann Craft", Genre.FANTASY_NOVELS, 346, Cover.SOFT_COVER, "1A");
+            book5.addFriends(friend4);
+            bookService.createBook(book4);
+
         };
     }
 }

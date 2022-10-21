@@ -6,10 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import vija.accenture.demoZ2.model.Book;
+import org.springframework.web.bind.annotation.RequestMapping;
 import vija.accenture.demoZ2.model.Friend;
-import vija.accenture.demoZ2.service.BookService;
 import vija.accenture.demoZ2.service.FriendService;
 
 import java.util.List;
@@ -17,65 +15,65 @@ import java.util.List;
 public class FriendController {
 
     @Autowired
-    private FriendService friendService;
-        @Autowired
-        private BookService bookService;
+    private final FriendService friendService;
 
+    public FriendController (FriendService friendService){
+        this.friendService = friendService;
+    }
 
-
-        @GetMapping("/friends")
+        @RequestMapping("/friends")
         public String findAllFriends(Model model) {
             List<Friend> friends = friendService.findAllFriends();
             model.addAttribute("friends", friends);
-            return "friends";
+            return "list-friends";
         }
 
-        @GetMapping("/friend/{id}")
-        public String findFriend(@PathVariable Long id, Model model) {
-            Friend friend = friendService.findFriendById(id);
-            model.addAttribute("friend", friend);
-            return "list-friend";
-        }
 
-        @GetMapping("/delete-friend/{id}")
-        public String deleteFriend(@PathVariable Long id, Model model) {
-            Friend friend = friendService.findFriendById(id);
-            model.addAttribute("friends", friendService.findAllFriends());
-            return "friends";
-        }
-
-        @GetMapping("/update-friend/{id}")
-        public String updateFriend(@PathVariable Long id, Model model) {
-            Friend friend = friendService.findFriendById(id);
-            model.addAttribute("books", bookService.findAllBooks());
-            return "update-friend";
-        }
-
-        @PostMapping("/save-update-friend/{id}")
-        public String updateFriend(@PathVariable Long id, Friend friend, BindingResult result, Model model) {
-            if (result.hasErrors()) {
-                return "update-friend";
-            }
-            friendService.updateFriend(friend);
-            model.addAttribute("friends", friendService.findAllFriends());
-            return "redirect:/friends";
-        }
-
-        @GetMapping("/add-friend")
-        public String addFriend(Friend friend, Model model) {
-            model.addAttribute("books", bookService.findAllBooks());
-            return "add-friend";
-        }
-
-        @PostMapping("/save-friend")
-        public String saveFriend(Friend friend, BindingResult result, Model model) {
-            if (result.hasErrors()) {
-                return "add-friend";
-            }
-            friendService.createFriend(friend);
-            model.addAttribute("books", bookService.findAllBooks());
-            return "redirect:/friends";
-        }
+    @RequestMapping("/friend/{id}")
+    public String findFriendById(@PathVariable("id") Long id, Model model) {
+        final Friend friend = friendService.findFriendById(id);
+        model.addAttribute("friend", friend);
+        return "list-friend";
     }
 
+    @GetMapping("/addFriend")
+    public String showCreateForm(Friend friend) {
+        return "add-friend";
+    }
 
+    @RequestMapping("/add-friend")
+    public String createFriend(Friend friend, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "add-friend";
+        }
+        friendService.createFriend(friend);
+        model.addAttribute("friend", friendService.findAllFriends());
+        return "redirect:/friends";
+    }
+
+    @GetMapping("/updateFriend/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+        final Friend friend = friendService.findFriendById(id);
+        model.addAttribute("friend", friend);
+        return "update-friend";
+    }
+
+    @RequestMapping("/update-friend/{id}")
+    public String updateFriend(@PathVariable("id") Long id, Friend friend, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            friend.setId(id);
+            return "update-friend";
+        }
+        friendService.updateFriend(friend);
+        model.addAttribute("friend", friendService.findAllFriends());
+        return "redirect:/friends";
+    }
+
+    @RequestMapping("/remove-friend/{id}")
+    public String deleteFriend(@PathVariable("id") Long id, Model model) {
+        friendService.deleteFriend(id);
+        model.addAttribute("friend", friendService.findAllFriends());
+        return "redirect:/friends";
+    }
+
+}

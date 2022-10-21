@@ -2,6 +2,7 @@ package vija.accenture.demoZ2.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vija.accenture.demoZ2.model.Book;
 import vija.accenture.demoZ2.model.Friend;
 import vija.accenture.demoZ2.repository.FriendRepository;
 
@@ -23,6 +24,10 @@ public class FriendService {
     }
 
     public void createBook(Friend friend) {
+        friendRepository.save(friend);
+    }
+
+    public void updateFriend(Friend friend) {
         friendRepository.save(friend);
     }
 

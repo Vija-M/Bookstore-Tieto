@@ -32,7 +32,7 @@ public class DemoZ2Application {
 
             Book book3 = new Book("World War 2", "Ann Craft", Genre.HISTORICAL_FICTION, 118, Cover.SOFT_COVER, "1A");
             Friend friend3 = new Friend("Sandis", 26634869);
-            book2.addFriend(friend3);
+            book3.addFriend(friend3);
             bookService.createBook(book3);
 
         };

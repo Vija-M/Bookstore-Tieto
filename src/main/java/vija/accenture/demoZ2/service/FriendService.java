@@ -31,6 +31,10 @@ public class FriendService {
         friendRepository.save(friend);
     }
 
+    public void updateFriend(Friend friend) {
+        friendRepository.save(friend);
+    }
+
     public void deleteFriend(Long id) {
         Friend friend = friendRepository.findById(id).orElseThrow(() -> new RuntimeException("Friend id is wrong"));
         friendRepository.deleteById(friend.getId());

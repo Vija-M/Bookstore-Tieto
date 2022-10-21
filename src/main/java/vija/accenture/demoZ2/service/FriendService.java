@@ -1,42 +1,19 @@
 package vija.accenture.demoZ2.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import vija.accenture.demoZ2.model.Book;
 import vija.accenture.demoZ2.model.Friend;
-import vija.accenture.demoZ2.repository.FriendRepository;
 
 import java.util.List;
 
-@Service
-public class FriendService {
+public interface FriendService {
 
-    @Autowired
-    private FriendRepository friendRepository;
+    List<Friend> findAllFriends();
 
-    public List<Friend> findAllFriends() {
-        return friendRepository.findAll();
-    }
+    Friend findFriendById(Long id);
 
-    public Friend findFriendById(Long id) {
-        Friend friend = friendRepository.findById(id).orElseThrow(() -> new RuntimeException("Friend id is wrong"));
-        return friend;
-    }
+    void createFriend(Friend friend);
 
-    public void createFriend(Friend friend) {
-        friendRepository.save(friend);
-    }
+    void updateFriend(Friend friend);
 
-    public void updateFriend(Friend friend) {
-        friendRepository.save(friend);
-    }
+    void deleteFriend(Long id);
 
-    public void updateFriend(Friend friend) {
-        friendRepository.save(friend);
-    }
-
-    public void deleteFriend(Long id) {
-        Friend friend = friendRepository.findById(id).orElseThrow(() -> new RuntimeException("Friend id is wrong"));
-        friendRepository.deleteById(friend.getId());
-    }
 }

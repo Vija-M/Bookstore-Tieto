@@ -22,7 +22,7 @@ public class Friend {
     @Column(name = "phoneNr", length = 50, nullable = false, unique = true)
     private int phoneNr;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE , CascadeType.REMOVE}, mappedBy = "authors")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE , CascadeType.REMOVE}, mappedBy = "friends")
     private Set<Book> books = new HashSet<>();
 
     public Friend(String name, int phoneNr) {

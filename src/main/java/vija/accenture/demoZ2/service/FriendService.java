@@ -23,7 +23,7 @@ public class FriendService {
         return friend;
     }
 
-    public void createBook(Friend friend) {
+    public void createFriend(Friend friend) {
         friendRepository.save(friend);
     }
 

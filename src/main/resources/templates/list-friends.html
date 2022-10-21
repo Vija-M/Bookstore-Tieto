@@ -33,7 +33,7 @@
     <div class="card-body">
       <div th:switch="${friends}" class="container my-5">
         <p class="my-5">
-          <a href="/add" class="btn btn-primary">
+          <a href="/addFriend" class="btn btn-primary">
             <i class="fas fa-user-plus ml-2">  Add Friend to the list </i></a>
         </p>
         <div class="col-md-12">
@@ -44,7 +44,6 @@
               <tr>
                 <th>Name </th>
                 <th>Phone Nr</th>
-                <th>Detail</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -53,8 +52,7 @@
               <tr th:each="friend : ${friends}">
                 <td th:text="${friend.name}"></td>
                 <td th:text="${friend.phoneNr}"></td>
-                <td><a th:href="@{/friend/{id}(id=${friend.id})}" class="btn btn-primary"><i class="fas fa-marker ml-2"></i></a></td>
-                <td><a th:href="@{/update/{id}(id=${friend.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                <td><a th:href="@{/updateFriend/{id}(id=${friend.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
                 <td><a th:href="@{/remove-friend/{id}(id=${friend.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
               </tr>
               </tbody>

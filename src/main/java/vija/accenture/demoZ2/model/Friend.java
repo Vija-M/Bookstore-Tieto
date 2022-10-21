@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "friends")
@@ -23,8 +22,7 @@ public class Friend {
     @Column(name = "phoneNr", length = 50, nullable = false, unique = true)
     private int phoneNr;
 
-    @ManyToMany(mappedBy = "friends", cascade = CascadeType.ALL)
-    // @JoinColumn(name = "book_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE , CascadeType.REMOVE}, mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
     public Friend(String name, int phoneNr) {

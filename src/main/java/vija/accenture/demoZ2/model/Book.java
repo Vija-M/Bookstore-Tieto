@@ -1,6 +1,5 @@
 package vija.accenture.demoZ2.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,11 +40,11 @@ public class Book {
     @Column(name = "shelf", length = 5, nullable = false)
     private String shelf;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "books_friends",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "friend_id")})
-    private Set<Friend> friends = new HashSet<>();
+    private Set<Friend> friends = new HashSet<Friend>();
 
     public Book(String title, String author, Genre genre, int pages, Cover cover, String shelf) {
         this.title = title;
@@ -62,7 +61,7 @@ public class Book {
 
     }
 
-    public void addFriend(Friend friend) {
+    public void addFriends(Friend friend) {
         this.friends.add(friend);
         friend.getBooks().add(this);
     }

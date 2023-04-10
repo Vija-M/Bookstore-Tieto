@@ -1,8 +1,8 @@
-package vija.accenture.demoZ2.repository;
+package vija.tieto.bookstore.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import vija.accenture.demoZ2.model.Book;
+import vija.tieto.bookstore.model.Book;
 
 import java.util.List;
 

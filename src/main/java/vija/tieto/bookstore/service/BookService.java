@@ -1,6 +1,6 @@
-package vija.accenture.demoZ2.service;
+package vija.tieto.bookstore.service;
 
-import vija.accenture.demoZ2.model.Book;
+import vija.tieto.bookstore.model.Book;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package vija.accenture.demoZ2.service.impl;
+package vija.tieto.bookstore.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import vija.accenture.demoZ2.exception.NotFoundException;
-import vija.accenture.demoZ2.model.Book;
-import vija.accenture.demoZ2.repository.BookRepository;
-import vija.accenture.demoZ2.service.BookService;
+import vija.tieto.bookstore.exception.NotFoundException;
+import vija.tieto.bookstore.model.Book;
+import vija.tieto.bookstore.repository.BookRepository;
+import vija.tieto.bookstore.service.BookService;
 
 import java.util.List;
 

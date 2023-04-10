@@ -1,4 +1,4 @@
-package vija.accenture.demoZ2.exception;
+package vija.tieto.bookstore.exception;
 
 public class NotFoundException extends RuntimeException {
 

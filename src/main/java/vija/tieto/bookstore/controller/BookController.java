@@ -1,4 +1,4 @@
-package vija.accenture.demoZ2.controller;
+package vija.tieto.bookstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -8,9 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import vija.accenture.demoZ2.model.Book;
-import vija.accenture.demoZ2.service.BookService;
-import vija.accenture.demoZ2.service.FriendService;
+import vija.tieto.bookstore.model.Book;
+import vija.tieto.bookstore.service.BookService;
+import vija.tieto.bookstore.service.FriendService;
 
 import java.util.List;
 

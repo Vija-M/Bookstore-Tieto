@@ -20,7 +20,9 @@ system. There are no strict requirements to UI, as well you may include minimum 
 data/fields to be requested from end-users and stored in DB. Please describe a reason of 
 choosing an architecture, technologies, frameworks, etc. You may draw by hand and take a 
 photo, e.g. its not required to use tools for UML, dataflow, MS Office, etc.
+
 ..............
+
 Main Components and System Architecture Based on the given requirements, I would recommend using the following components and system architecture to build the web application:
 •	Java 11: The latest version of Java offers better performance, security, and stability.
 •	Spring Boot: A popular framework that provides a simplified way to build web applications and microservices.
@@ -32,6 +34,7 @@ The system architecture would be based on the following components:
 •	Business Layer: This layer would be responsible for handling business logic and interactions with the data access layer. The Spring Boot framework would be used to implement this layer.
 •	Data Access Layer: This layer would be responsible for handling interactions with the MySQL database. The Spring Data framework would be used to implement this layer.
 The overall architecture of the system can be represented as follows:
+
 ..............
 
 2. Describe risks (if any) you would see in your chosen solution.
@@ -62,6 +65,7 @@ Deployment:
 3.Start the H2 database and run the application by running the BookstoreApplication.java class. This will create the necessary tables in the database, populate them with sample data, and start the embedded web server to serve the application.
 Open a web browser and navigate to http://localhost:8080/. The Bookstore.com application should be up-and-running and accessible in the browser.
 4.Once the application is running, you can access it in your browser by visiting the following URL: http://localhost:8080/ 
+
 ..................
 
 (Optional) 2. Given:

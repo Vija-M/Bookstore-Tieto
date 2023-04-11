@@ -9,6 +9,7 @@ import vija.tieto.bookstore.model.Book;
 import vija.tieto.bookstore.repository.BookRepository;
 import vija.tieto.bookstore.service.BookService;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getAllBooks() {
         return bookRepository.findAllByOrderByPublicationDateDesc();
+    }
+
+    @Override
+    public void addPriceToBook(Long bookId, BigDecimal price) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid book ID: " + bookId));
+        book.setPrice(price);
+        bookRepository.save(book);
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)

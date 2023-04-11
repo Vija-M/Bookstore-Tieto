@@ -7,5 +7,8 @@ import java.util.Optional;
 
 public interface UserService {
     Optional<User> findByLogin(String login);
+
     boolean isAdmin(Principal principal);
+
+    User saveUser(User user);
 }

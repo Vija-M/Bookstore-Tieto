@@ -1,9 +1,5 @@
 package vija.tieto.bookstore.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +11,7 @@ import vija.tieto.bookstore.service.BookService;
 import vija.tieto.bookstore.service.UserService;
 
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.List;
 
@@ -23,13 +20,14 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
-    private static final int PAGE_SIZE = 50;
+    static final int PAGE_SIZE = 50;
     private UserService userService;
 
-        public BookController(BookService bookService, UserService userService) {
+    public BookController(BookService bookService, UserService userService) {
         this.bookService = bookService;
         this.userService = userService;
     }
+
 
     @GetMapping("/")
     public String getAllBooks(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
@@ -37,7 +35,7 @@ public class BookController {
 
         int totalPages = (int) Math.ceil((double) books.size() / PAGE_SIZE);
 
-        int startIndex = (page - 1) * PAGE_SIZE;
+        int startIndex = ( page - 1 ) * PAGE_SIZE;
         int endIndex = Math.min(startIndex + PAGE_SIZE, books.size());
 
         List<Book> pageBooks = books.subList(startIndex, endIndex);
@@ -45,7 +43,6 @@ public class BookController {
         model.addAttribute("books", pageBooks);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
-
         return "index";
     }
 
@@ -73,7 +70,16 @@ public class BookController {
         redirectAttributes.addFlashAttribute("successMessage", "Book added successfully");
         return "redirect:/books";
     }
+
+    @PostMapping("/{id}/price")
+    public String addPriceToBook(@PathVariable("id") Long bookId, @RequestParam("price") BigDecimal price, Model model) {
+        bookService.addPriceToBook(bookId, price);
+        model.addAttribute("message", "Price added successfully");
+        return "redirect:/books/" + bookId;
+    }
 }
+
+
 
 
 /*

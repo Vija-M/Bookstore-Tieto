@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
         return user.isPresent() && user.get().isAdmin();
     }
 
+    @Override
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
 }

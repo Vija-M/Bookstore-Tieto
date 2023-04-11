@@ -48,7 +48,13 @@ public class Book {
         this.price = price;
         this.genre = genre;
         this.cover = cover;
-
+    }
+    public Book(String title, String author, LocalDate publicationDate, Genre genre, Cover cover) {
+        this.title = title;
+        this.author = author;
+        this.publicationDate = publicationDate;
+        this.genre = genre;
+        this.cover = cover;
     }
 
 }

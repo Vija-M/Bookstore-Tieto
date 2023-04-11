@@ -6,15 +6,16 @@ import org.springframework.stereotype.Repository;
 import vija.tieto.bookstore.model.Book;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
+    Optional<Book> findByTitle(String title);
 
-    Book findByTitle(String title);
 
     List<Book> findAllByOrderByPublicationDateDesc();
 
     @Query("SELECT b FROM Book b WHERE b.title LIKE %?1%" + " OR b.author LIKE %?1%" + " OR b.genre LIKE %?1%")
-     List<Book> search(String keyword);
+    List<Book> search(String keyword);
 }

@@ -22,27 +22,16 @@ choosing an architecture, technologies, frameworks, etc. You may draw by hand an
 photo, e.g. its not required to use tools for UML, dataflow, MS Office, etc.
 
 ..............
-
 Main Components and System Architecture Based on the given requirements, I would recommend using the following components and system architecture to build the web application:
-
 •	Java 11: The latest version of Java offers better performance, security, and stability.
-
 •	Spring Boot: A popular framework that provides a simplified way to build web applications and microservices.
-
 •	Spring MVC: A framework that supports the Model-View-Controller pattern and provides a structured approach to building web applications.
-
 •	Thymeleaf: A modern server-side Java template engine that enables the creation of highly maintainable and testable HTML templates.
-
 •	H2 database: A popular open-source relational database management system that is typically faster than MySQL when dealing with small to medium-sized databases
-
 The system architecture would be based on the following components:
-
 •	Presentation Layer: This layer would be responsible for handling user requests and rendering views. The Spring MVC framework would be used to implement this layer. The Thymeleaf template engine would be used to render HTML templates.
-
 •	Business Layer: This layer would be responsible for handling business logic and interactions with the data access layer. The Spring Boot framework would be used to implement this layer.
-
 •	Data Access Layer: This layer would be responsible for handling interactions with the MySQL database. The Spring Data framework would be used to implement this layer.
-
 ..............
 
 2. Describe risks (if any) you would see in your chosen solution.

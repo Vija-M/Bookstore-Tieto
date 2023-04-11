@@ -36,8 +36,11 @@ The system architecture would be based on the following components:
 
 2. Describe risks (if any) you would see in your chosen solution.
 Some potential risks of this solution include:
+
 •	Performance: Since the main page load time cannot exceed 2 seconds, the system must be designed to handle a large number of requests and serve the content quickly. If the system is not optimized for performance, it may lead to slow page load times and a poor user experience.
+
 •	Scalability: The system must be designed to handle a large number of parallel user sessions during peak hours. If the system is not scalable, it may lead to downtime or slow response times.
+
 •	Security: The system must be designed to handle user data securely and prevent unauthorized access. If the system is not secure, it may lead to data breaches or other security vulnerabilities.
 
 3. Provide source code and pre-compiled package.
@@ -50,19 +53,26 @@ Target Operating System:
 This setup guide assumes that you are using a Windows or Unix-based operating system.
 
 What to install:
+
 Java Development Kit (JDK) version 11 or later
+
 Apache Maven
+
 An IDE such as IntelliJ or Eclipse
+
 H2 database (already included as a dependency in the project)
+
 A web browser such as Chrome, Firefox or Safari
 
 Deployment:
-1.Clone or download the project source code from a repository to your local machine.
-2.Compile and build the application using Maven. This will compile the application code, run the tests, and create a deployable package (a JAR file) under the target directory.
-3.Start the H2 database and run the application by running the BookstoreApplication.java class. This will create the necessary tables in the database, populate them with sample data, and start the embedded web server to serve the application.
-Open a web browser and navigate to http://localhost:8080/. The Bookstore.com application should be up-and-running and accessible in the browser.
-4.Once the application is running, you can access it in your browser by visiting the following URL: http://localhost:8080/ 
 
+1.Clone or download the project source code from a repository to your local machine.
+
+2.Compile and build the application using Maven. This will compile the application code, run the tests, and create a deployable package (a JAR file) under the target directory.
+
+3.Start the H2 database and run the application by running the BookstoreApplication.java class. This will create the necessary tables in the database, populate them with sample data, and start the embedded web server to serve the application.
+
+4.Open a web browser and navigate to http://localhost:8080/. The Bookstore.com application should be up-and-running and accessible in the browser.
 ..................
 
 (Optional) 2. Given:

@@ -9,6 +9,9 @@ import vija.tieto.bookstore.model.Cover;
 import vija.tieto.bookstore.model.Genre;
 import vija.tieto.bookstore.service.BookService;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @SpringBootApplication
 public class BookstoreApplication {
 
@@ -19,20 +22,20 @@ public class BookstoreApplication {
     @Bean
     public CommandLineRunner initialCreate(BookService bookService) {
         return (args) -> {
-            Book book1 = new Book("Maija un Paija", "John Smith", Genre.FAIRY_TALE, 48, Cover.HARD_COVER, "1A");
-            bookService.createBook(book1);
+            Book book1 = new Book("Maija un Paija", "John Smith", LocalDate.of(2017, 1, 13), BigDecimal.valueOf(26.67), Genre.FAIRY_TALE, Cover.HARD_COVER);
+            bookService.addBook(book1);
 
-            Book book2 = new Book("Mumu", "Addy Brain", Genre.FANTASY_NOVELS, 204, Cover.HARD_COVER, "2A");
-            bookService.createBook(book2);
+            Book book2 = new Book("Mumu", "Addy Brain", LocalDate.of(2022, 3, 4), BigDecimal.valueOf(120.83), Genre.FANTASY_NOVELS, Cover.HARD_COVER);
+            bookService.addBook(book2);
 
-            Book book3 = new Book("World War 2", "Ann Craft", Genre.HISTORICAL_FICTION, 118, Cover.SOFT_COVER, "1A");
-            bookService.createBook(book3);
+            Book book3 = new Book("World War 2", "Ann Craft",LocalDate.of(2021, 4, 23), BigDecimal.valueOf(6.23), Genre.HISTORICAL_FICTION, Cover.SOFT_COVER);
+            bookService.addBook(book3);
 
-            Book book4 = new Book("World War 1", "Ann Craft", Genre.HISTORICAL_FICTION, 246, Cover.SOFT_COVER, "1A");
-            bookService.createBook(book4);
+            Book book4 = new Book("World War 1", "Ann Craft", LocalDate.of(2011, 4, 23), BigDecimal.valueOf(15.23), Genre.HISTORICAL_FICTION, Cover.SOFT_COVER);
+            bookService.addBook(book4);
 
-            Book book5 = new Book("World War 3", "Ann Craft", Genre.FANTASY_NOVELS, 346, Cover.SOFT_COVER, "1A");
-            bookService.createBook(book4);
+            Book book5 = new Book("World War 3", "Ann Craft", LocalDate.of(2023, 5, 23), BigDecimal.valueOf(21.23), Genre.FANTASY_NOVELS, Cover.SOFT_COVER);
+            bookService.addBook(book4);
 
         };
     }

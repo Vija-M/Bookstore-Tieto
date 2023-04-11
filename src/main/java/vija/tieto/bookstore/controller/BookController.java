@@ -5,24 +5,54 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import vija.tieto.bookstore.model.Book;
 import vija.tieto.bookstore.service.BookService;
-import vija.tieto.bookstore.service.FriendService;
+
 
 import java.util.List;
 
 @Controller
 public class BookController {
+
     private final BookService bookService;
-    private final FriendService friendService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    @GetMapping("/")
+    public String getAllBooks(Model model) {
+        List<Book> books = bookService.getAllBooks();
+        model.addAttribute("books", books);
+        return "index";
+    }
+
+    @GetMapping("/addBook")
+    public String showAddBookForm(Model model) {
+        model.addAttribute("book", new Book());
+        return "add-book";
+    }
+
+    @PostMapping("/addBook")
+    public String addBook(@ModelAttribute("book") Book book) {
+        if (!bookService.addBook(book)) {
+            return "redirect:/addBook?error";
+        }
+        return "redirect:/";
+    }
+}
+
+
+/*
+@Controller
+public class BookController {
+    private final BookService bookService;
+
 
     @Autowired
-    public BookController(BookService bookService, FriendService friendService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
-        this.friendService = friendService;
     }
 
     @RequestMapping("/books")
@@ -88,4 +118,4 @@ public class BookController {
         return "redirect:/books";
     }
 }
-
+*/

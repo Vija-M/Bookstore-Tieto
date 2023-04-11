@@ -13,17 +13,25 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
 
-    private final BookRepository bookRepository;
+        private final BookRepository bookRepository;
 
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+        public BookServiceImpl(BookRepository bookRepository) {
+            this.bookRepository = bookRepository;
+        }
 
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    @Override
-    public List<Book> findAllBooks() {
-        return bookRepository.findAll();
-    }
+        @Override
+        public boolean addBook(Book book) {
+            if (bookRepository.findByTitle(book.getTitle()) != null) {
+                return false;
+            }
+            bookRepository.save(book);
+            return true;
+        }
+
+        @Override
+        public List<Book> getAllBooks() {
+            return bookRepository.findAllByOrderByPublicationDateDesc();
+        }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
@@ -41,10 +49,6 @@ public class BookServiceImpl implements BookService {
                 .orElseThrow(() -> new NotFoundException(String.format("Book not found with ID %d", id)));
     }
 
-    @Override
-    public void createBook(Book book) {
-        bookRepository.save(book);
-    }
 
     @Override
     public void updateBook(Book book) {

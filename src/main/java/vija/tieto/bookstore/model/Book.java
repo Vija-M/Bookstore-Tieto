@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -18,35 +20,35 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title", length = 50, nullable = false)
+    @Column(name = "title", unique = true, length = 50, nullable = false)
     private String title;
-
 
     @Column(name = "author", length = 50, nullable = false)
     private String author;
+
+    @Column(name = "added_at", updatable = false)
+    private LocalDate publicationDate;
+
+    @Column(name = "price", length = 10)
+    private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "genre", length = 25)
     private Genre genre;
 
-    @Column(name = "pages", length = 4)
-    private int pages;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "cover", length = 15)
     private Cover cover;
 
-    @Column(name = "shelf", length = 5, nullable = false)
-    private String shelf;
 
-
-    public Book(String title, String author, Genre genre, int pages, Cover cover, String shelf) {
+    public Book(String title, String author, LocalDate publicationDate, BigDecimal price, Genre genre, Cover cover) {
         this.title = title;
         this.author = author;
+        this.publicationDate = publicationDate;
+        this.price = price;
         this.genre = genre;
-        this.pages = pages;
         this.cover = cover;
-        this.shelf = shelf;
+
     }
 
 }

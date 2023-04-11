@@ -45,6 +45,9 @@ The system architecture would be based on the following components:
 ..............
 
 2. Describe risks (if any) you would see in your chosen solution.
+
+......
+
 Some potential risks of this solution include:
 
 •	Performance: Since the main page load time cannot exceed 2 seconds, the system must be designed to handle a large number of requests and serve the content quickly. If the system is not optimized for performance, it may lead to slow page load times and a poor user experience.
@@ -52,6 +55,8 @@ Some potential risks of this solution include:
 •	Scalability: The system must be designed to handle a large number of parallel user sessions during peak hours. If the system is not scalable, it may lead to downtime or slow response times.
 
 •	Security: The system must be designed to handle user data securely and prevent unauthorized access. If the system is not secure, it may lead to data breaches or other security vulnerabilities.
+
+........
 
 3. Provide source code and pre-compiled package.
 4. Provide “short” setup guide, e.g. what is target OS, what to install (appserver, DB, …), 
